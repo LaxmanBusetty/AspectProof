@@ -1,153 +1,160 @@
 # AspectProof
 
-**Prove your product works everywhere.**
+Prove your web app works at every screen size, not just the one your coding agent happened to check.
 
-AI coding agents build and check at desktop width. Then the "Place order" button disappears on a phone, the menu vanishes on a tablet, and nobody notices until a customer does.
+I built this for the KaneCLI Online Hackathon. The idea came from something that keeps happening to me: I ask an AI agent to build or fix a page, it says "done", it looks great on my laptop, and then I open it on my phone and the checkout button is hanging off the side of the screen. The agent never looked at a phone. Nobody did.
 
-AspectProof runs your key user flows at every screen size, from a 320px phone to a 1920px desktop, with **Kane CLI** driving a real Chrome browser. Failures go back to your coding agent, which fixes the code, and Kane re-verifies until every size is green.
+AspectProof makes the agent look. It runs your real user flows (browse, checkout, sign up, whatever matters) at 8 screen sizes, from a 320px phone up to a 1920px desktop. Every single check is a Kane CLI run in a real Chrome browser. When something breaks, the details go straight back to the coding agent, it fixes the code, and Kane checks again. The agent isn't allowed to say it's finished until every size passes.
 
-```
-desktop works → phone breaks → Kane catches it → the agent fixes it → every profile passes
-```
+## What actually happened when I ran it
 
-Every check is a Kane CLI run. No Playwright, no Selenium, no selectors to maintain.
+The repo includes a small demo store called Northtrail with three responsive bugs I planted on purpose:
 
----
+1. On tablets (601 to 1100px wide) the nav links get hidden, but the Menu button only shows up below 600px. So there's no way to reach the shop or the cart.
+2. On phones, the cart summary has a `min-width: 440px`, which pushes the "Place order" button off the right edge.
+3. On a phone held sideways, the promo bar turns into a full-screen overlay with its close button hidden.
+
+Desktop and laptop look perfect, which is exactly why bugs like these ship.
+
+Here's the real run, with real Kane and Claude Code doing the fixing:
+
+| Round | What happened | Passing |
+|---|---|---|
+| 3 | First full run of all 24 checks | 14 / 24 |
+| 4 | Claude tried to finish. The Stop hook ran Kane, found 10 failures, and blocked it | 14 / 24 |
+| 5 | Claude fixed things based only on Kane's reports. Re-checked the 10 | 23 / 24 |
+| 6 | Last one fixed | 24 / 24 |
+| 7 | Full regression sweep. One desktop check failed, but Kane's own triage said it was a test hiccup, not an app bug | 23 / 24 |
+| 8 | Re-run of that check passed | 24 / 24 |
+| 9 | Final full sweep | **24 / 24** |
+
+Claude never saw the list of planted bugs (it's blocked from reading that file). Everything it knew came from Kane. Its whole fix was 10 lines added and 16 removed in one CSS file.
+
+In total that was 97 Kane runs, about 65 seconds and roughly 25 credits each, around 2,400 credits for the whole thing. The final report is in [`docs/report-verified-24-of-24.html`](docs/report-verified-24-of-24.html), and the exact message the hook sent to Claude in round 4 is in [`docs/evidence/`](docs/evidence/).
+
+My favorite moment: on the tablet sizes, my layout checker saw nothing wrong. Technically nothing *was* overflowing or overlapping; the links were just hidden. Kane caught it anyway, because it tried to use the site like a person would and reported "the header provides neither visible Shop navigation nor a Menu button." That's the kind of bug you only find by actually using the thing.
 
 ## How it works
 
+Kane CLI can't make its Chrome window smaller than 800×600, and its mobile mode only drives native apps, not websites. So I couldn't just tell Kane "be an iPhone."
+
+Instead, AspectProof runs a small local server that does two things:
+
+- It serves a "device frame" page that loads your app in a frame at the exact phone or tablet size. Your CSS sees a 375px-wide screen, so the real mobile layout renders, and Kane uses it like a user would. Laptop and tablet-landscape sizes skip the frame and use a real Kane window size.
+- It proxies your app through the same address, so a small script on the frame page can measure the app from inside the same browser Kane is using. It looks for sideways scrolling (and which element is causing it), buttons pushed off-screen, controls covered by overlays, and tap targets that are too small. Results show up in a panel next to the device, and Kane is asked to confirm that panel says 0 issues.
+
 ```
-                 ┌──────────────────────── AspectProof harness (localhost:4400) ────────────────────────┐
- Kane CLI  ───▶  │  /__ap/frame?profile=phone-375                                                          │
- (real Chrome)   │  ┌──────────── device frame 375×812 ───────────┐   ┌─ AspectProof layout panel ─┐      │
-                 │  │  your app (same-origin proxy of :3000)      │   │ Issues seen this session: 2│      │
-                 │  │  responds to the frame width, so its        │◀──│ [offscreen] #place-order … │      │
-                 │  │  phone layout really renders                │   │ (layout probe, live)       │      │
-                 │  └─────────────────────────────────────────────┘   └────────────────────────────┘      │
-                 └────────────────────────────────────────────────────────────────────────────────────────┘
-                         │ NDJSON (--agent)                                │ probe report (exact selectors)
-                         ▼                                                 ▼
-                 results.json ──▶ feedback.md ──▶ coding agent (Claude Code hook / loop) ──▶ fix ──▶ re-verify
-                                                                        └──▶ report.html (red → green matrix)
+Kane CLI (real Chrome)
+   └─ localhost:4400/__ap/frame?profile=phone-375
+        ├─ your app, in a 375×812 frame (proxied from localhost:3000)
+        └─ layout panel: "Issues seen this session: 0"
+                 │
+                 ▼
+results ─▶ feedback for the agent ─▶ Claude Code fixes ─▶ Kane checks again
 ```
 
-1. **Laptop and tablet-landscape sizes run in a real Kane window.** `kane-cli config set-window 1024x768`, then the flow.
-2. **Phone and tablet-portrait sizes run in the device frame.** Kane's window has a minimum of 800×600, so AspectProof serves a page that loads your app in a frame at the exact device size (320×568, 375×812, 390×844, 768×1024, and landscape). The app sees a 375px-wide viewport, so its media queries fire and its real mobile layout renders, inside Kane's browser.
-3. **The layout probe measures what users can't do.** Inside the same browser, it detects horizontal overflow (and the element causing it), controls pushed off-screen, controls covered by overlays (ignoring bars you can scroll past), and tap targets under 24×24px. It shows them in a panel that Kane reads and asserts on, and posts them to AspectProof with exact selectors for the agent.
-4. **Kane verifies the user flow.** Each flow is plain English ("add Trail Runner Shoes to the cart, check out…"). Kane runs it with `--agent` and AspectProof parses the NDJSON `run_end` event: status, one-liner, steps, Test Manager link.
-5. **The agent closes the loop.** Failures become `.aspectproof/feedback.md`: what Kane couldn't do, which element overflowed and by how much, which sizes still pass. The agent fixes the code, AspectProof re-runs only the failing checks, then sweeps the full matrix for regressions.
+A check only passes if Kane completed the flow and the layout panel stayed clean. The two catch different things, which is the point: the measurements catch a half-clipped button that Kane might still manage to tap, and Kane catches things like a missing menu that no measurement would flag.
 
-A cell passes only when **Kane completed the flow** *and* **the probe saw 0 layout issues**. The two catch different things. The probe can't tell that a tablet user has no way to reach the cart (hidden links aren't a layout error), but Kane can. Kane may still manage to tap a half-clipped button, but the probe reports the clipping.
+When a check fails, the agent gets a plain report: what Kane was trying to do, where it got stuck, Kane's own bug verdict, and the exact element that overflowed and by how many pixels. For example, `.cart-summary` with `min-width: 440px`, 81px too wide.
 
-## Quick start (about 5 minutes)
+One more thing I added after the real run: if Kane says a failure was its own automation problem rather than an app bug (it reports this in its result), AspectProof quietly retries that check once instead of sending the agent on a wild goose chase.
 
-Requirements: Node 18+, Chrome, a TestMu AI account ([free 10,000 Kane credits](https://www.testmuai.com/kane-cli/)).
+## Try it
+
+You need Node 18+, Chrome, and a free TestMu AI account (it comes with 10,000 Kane credits).
 
 ```bash
 npm install -g @testmuai/kane-cli
-kane-cli login                      # opens your browser once
+kane-cli login
 
-git clone <this repo> aspectproof && cd aspectproof
-npm run demo                        # terminal 1: the demo shop on http://localhost:3000
-
-# terminal 2: one check first, to confirm Kane is wired up
-node bin/aspectproof.js verify --profiles phone-375 --flows checkout
-
-# the full matrix: 8 screen profiles × 3 flows = 24 Kane runs
-node bin/aspectproof.js verify
-node bin/aspectproof.js report --open
+git clone https://github.com/LaxmanBusetty/AspectProof.git
+cd AspectProof
+npm run demo          # starts the demo store on localhost:3000, leave it running
 ```
 
-Want to see what Kane sees? `node bin/aspectproof.js serve` prints a frame URL per profile. Open one in Chrome.
+In a second terminal:
 
-## Close the loop with an agent
+```bash
+# one check first, about a minute
+node bin/aspectproof.js verify --profiles phone-375 --flows checkout
 
-### Option A: Claude Code Stop hook (tightest loop)
+# the whole thing: 8 sizes × 3 flows, about 25 minutes
+node bin/aspectproof.js verify
+npm run report
+```
 
-Run `npm run setup-claude` once. It installs `hooks/claude-settings.json` as `.claude/settings.json`, which adds a **Stop hook**. When Claude Code tries to finish a task, the hook runs AspectProof:
+Want to see what Kane sees? `npm run serve` prints a link for each screen size you can open in your browser. Add `--headed --live` to `verify` to watch Kane's Chrome window and its steps as it works, or run `npm run watch` in another terminal.
 
-- **Any check fails:** the hook blocks the stop and returns Kane's findings as the reason. Claude reads them, fixes the CSS, and tries to stop again, which re-runs only the failing checks.
-- **Everything passes:** a full regression sweep, then Claude is allowed to stop with "AspectProof verified ✓ 24/24".
-- **Nothing changed since the last green run** (git fingerprint): the stop is allowed instantly.
-- **Still red after 4 rounds** (configurable): Claude is allowed to stop, and the report shows what's left.
-- **App not running:** the hook reports it and never traps the agent.
+To start over with the buggy store: `npm run reset-demo`.
+
+## Running the loop with Claude Code
 
 ```bash
 npm install -g @anthropic-ai/claude-code
-npm run setup-claude                # once
-npm run demo                        # keep the app running
-claude                              # in this folder
-> The shop needs to look right on phones and tablets. Review the responsive CSS and fix anything broken.
+npm run setup-claude      # installs the Stop hook into .claude/settings.json
+claude
 ```
 
-For your own project: `npx aspectproof init --app http://localhost:5173 --claude`.
+Then ask it something like "make sure the shop works well on phones and tablets."
 
-The shipped settings also stop Claude from reading `docs/planted-bugs.md` (the answer key) and from editing AspectProof itself, so it can't "fix" a test by changing it.
+From there it's hands-off. Every time Claude thinks it's done, the hook runs Kane. If anything fails, Claude gets the report and keeps going. Once the failures pass, the hook runs all 24 checks one more time to make sure nothing else broke. A few safety valves: it gives up after 4 rounds, it skips the check if nothing changed since the last green run, and if the app isn't running it just tells you instead of trapping the agent.
 
-### Option B: `aspectproof loop` (any headless agent)
+The settings also stop Claude from reading `docs/planted-bugs.md` or editing AspectProof itself. It has to fix the app, not the test.
+
+If you use a different agent, `node bin/aspectproof.js loop --agent codex` (or any command that takes a prompt file) does the same loop without hooks.
+
+## Using it on your own app
 
 ```bash
-node bin/aspectproof.js loop --agent claude                         # claude -p, edits auto-accepted
-node bin/aspectproof.js loop --agent codex                          # codex exec --full-auto
-node bin/aspectproof.js loop --agent "my-agent --prompt-file {prompt_file}"
+npx aspectproof init --app http://localhost:5173 --claude
 ```
 
-AspectProof verifies, hands the failures to the agent, re-verifies the failing cells, sweeps the full matrix when they're green, and stops at all-green or after `loop.maxRounds`.
+Then edit `aspectproof.config.json`. The flows are just plain English, written the way you'd explain a task to a tester:
 
-## Configuration: `aspectproof.config.json`
-
-```jsonc
+```json
 {
-  "app": "http://localhost:3000",          // your running app
-  "harnessPort": 4400,
-  "frameWindow": "1280x800",               // Kane window used for device-frame profiles
-  "profiles": [
-    { "id": "tablet-landscape", "label": "Tablet landscape 1024×768", "mode": "window", "width": 1024, "height": 768 },
-    { "id": "phone-375", "label": "Phone 375×812", "mode": "frame", "width": 375, "height": 812, "touch": true }
-  ],
-  "flows": [
-    { "id": "checkout", "name": "Checkout", "start": "/#shop",
-      "objective": "Add 'Trail Runner Shoes' to the cart, open the cart, … confirm an 'Order confirmed' message appears." }
-  ],
-  "kane": { "command": "kane-cli", "headless": true, "maxSteps": 30, "timeoutSeconds": 300, "concurrency": 1, "extraArgs": [] },
-  "loop": { "maxRounds": 4, "fullSweepOnGreen": true }
+  "id": "checkout",
+  "name": "Checkout",
+  "start": "/#shop",
+  "objective": "Add 'Trail Runner Shoes' to the cart, open the cart, change the quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
 }
 ```
 
-- `mode: "window"` needs a size Kane supports (800–3840 × 600–2160). Anything smaller uses `mode: "frame"`.
-- Flows are plain English, written the way you'd brief a QA tester. AspectProof wraps each one with instructions to use only the app and to assert the layout panel.
-- `kane.extraArgs` passes straight to `kane-cli run`, e.g. `["--bug-detection", "continue"]`.
-- Exit codes: `0` all pass, `1` something failed, `2` setup error. Usable in CI.
+Screen sizes live in the same file. Anything 800px wide or more can use a real Kane window (`"mode": "window"`); anything smaller goes in the frame (`"mode": "frame"`).
 
-## What's in the repo
+`verify` exits with 0 when everything passes and 1 when something fails, so it can run in CI too.
 
-| Path | What it is |
+## What's in here
+
+| | |
 |---|---|
-| `bin/aspectproof.js` | CLI: `init`, `serve`, `verify`, `loop`, `report`, `hook claude-stop` |
-| `src/harness.js` | Same-origin proxy + device-frame server + probe report receiver |
-| `src/harness-assets/frame.js` | Device frame sizing and the layout probe |
-| `src/kane.js` | `kane-cli run --agent` wrapper and NDJSON parser (`run_end`, steps, errors) |
-| `src/verify.js` | Profile × flow matrix, window grouping, verdicts, state |
-| `src/feedback.js` | Turns failures into an agent-ready prompt |
-| `src/report.js` | Self-contained HTML report with red → green history |
-| `src/loop.js` | Claude Code Stop hook and the `loop` driver |
-| `hooks/claude-settings.json` | Claude Code settings: Stop hook + read/edit guards (`npm run setup-claude`) |
-| `demo-shop/` | Northtrail Outfitters, a demo store with 3 planted responsive bugs |
-| `.aspectproof/` | Run output (git-ignored): `state.json`, `feedback.md`, `report.html`, per-run NDJSON logs |
+| `bin/aspectproof.js` | The CLI: `init`, `serve`, `verify`, `loop`, `watch`, `report` |
+| `src/harness.js` | The local server: device frame, proxy, layout reports |
+| `src/harness-assets/frame.js` | Frame sizing and the layout checker |
+| `src/kane.js` | Runs `kane-cli run --agent` and reads its output |
+| `src/verify.js` | Runs the matrix, decides pass/fail, retries Kane hiccups |
+| `src/feedback.js` | Writes the report the agent reads |
+| `src/loop.js` | The Claude Code Stop hook and the `loop` command |
+| `src/report.js` | The HTML report |
+| `demo-shop/` | Northtrail, the demo store |
+| `docs/` | Planted bugs (spoilers), demo script, final report, evidence |
+| `.testmuai/tests/` | Every Kane run saved as a reusable test, written by Kane itself |
 
-## Honest limits
+## Limitations
 
-- The device frame reproduces **viewport size and layout** (media queries, overflow, stacking). It does not emulate touch events, a mobile user-agent, or device pixel ratio. Kane CLI's mobile targets run native apps on the iOS Simulator and Android Emulator, not mobile web pages, so the frame is the only way to put phone-width web layouts in front of Kane today.
-- The frame proxies your app through `localhost:4400`. Apps that hard-code absolute URLs to their own origin, or that need cookies scoped to a different domain, may need `app` pointed at a local build.
-- Kane's on-screen judgment can vary between runs. The probe's measurements are deterministic and are what the agent fixes against.
-- A full matrix is 24 Kane runs. Use `--profiles`/`--flows` while iterating; the hook and `loop` only re-run failing cells until the final sweep.
+I'd rather be upfront about these:
 
-## Roadmap
+- The frame gets the screen size and layout right, but it isn't a real phone. No touch events, no mobile browser identity, no pixel density. For a real device you'd want Kane's native mobile support, which means wrapping the site in an app.
+- Your app runs through a proxy on port 4400. Apps that hard-code their own full URL or rely on cookies for a specific domain may need some setup.
+- Kane is an AI agent, so it doesn't behave identically every run. That's part of why the layout checker exists: its measurements are the same every time.
+- A full run of 24 checks takes about 25 minutes. While you're iterating, use `--profiles` and `--flows`; the hook only re-runs what failed until the final sweep.
 
-- Real Android emulator pass: wrap the app in a Capacitor WebView shell and run the same flows with `--target emulator` on Apple Silicon.
-- Save each green flow as a Kane `_test.md` so it replays in CI at zero credits.
-- A GitHub Action that posts the red/green matrix on every pull request preview.
+## What I'd do next
 
-## Built for the KaneCLI Online Hackathon
+- Run the same flows on a real Android emulator by wrapping the site in a Capacitor shell.
+- A GitHub Action that posts the pass/fail grid on every pull request.
+- Run checks in parallel. Sizes that share a window size could run side by side and cut the 25 minutes down a lot.
 
-AspectProof was built with Claude Code (the coding agent) and is verified with Kane CLI. See `docs/demo-script.md` for the 3-minute demo outline.
+---
+
+Built with Claude Code, verified with Kane CLI.

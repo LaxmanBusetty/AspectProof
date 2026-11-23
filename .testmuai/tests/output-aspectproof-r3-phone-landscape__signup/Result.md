@@ -1,0 +1,21 @@
+---
+test: ../aspectproof-r3-phone-landscape__signup_test.md
+status: failed
+started: 2026-11-23T07:16:43.434Z
+duration_s: 32.3
+session_id: 34acfba7-690d-4755-8476-d87ca4e69df7
+---
+
+# Session: aspectproof-r3-phone-landscape__signup — Result
+
+## Step 1 ✗ failed (32.3s)
+md5: f36fecd8d91c9b9683a8370ce36fc7fd
+Reason: Step 1 is blocked: the Email textbox is covered, and the panel reports Issues seen this session: 6.
+You are testing a web app inside the AspectProof harness, which shows the app at "Phone landscape 844×390".
+The page has the app inside a device frame on the left and an "AspectProof layout" panel on the right.
+Interact only with the app, the way a real user on this screen size would. Do not resize the window and do not interact with the panel.
+
+Task: Fill in the 'Get trail notes' form with name 'Test User' and email 'test@example.com', press 'Subscribe', and confirm a 'You're subscribed' message appears.
+
+Finally, read the "AspectProof layout" panel and confirm it shows "Issues seen this session: 0". Store the full panel text as layout_report.
+The test fails if the task cannot be completed at this screen size, or if the panel shows any issues. When it fails, name the exact control or step that was blocked and why.

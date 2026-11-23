@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./docs/planted-bugs.md)",
+      "Edit(./aspectproof.config.json)",
+      "Edit(./src/**)",
+      "Edit(./bin/**)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/bin/aspectproof.js\" hook claude-stop",
+            "timeout": 3600
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+html, body { margin: 0; height: 100%; background: #14161a; color: #e9ecef;
+  font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+* { box-sizing: border-box; }
+
+#ap-root { display: flex; height: 100%; }
+
+/* Device mode: device on the left, panel on the right. */
+#ap-stage { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+#ap-device { position: relative; flex: none; border-radius: 18px; box-shadow: 0 0 0 10px #2a2e35, 0 12px 40px rgba(0,0,0,.5); overflow: hidden; background: #fff; }
+#ap-app { display: block; border: 0; background: #fff; transform-origin: 0 0; }
+
+#ap-panel { width: 340px; flex: none; padding: 18px; background: #1c1f24; border-left: 1px solid #2c3037; overflow: auto; }
+.ap-title { font-weight: 800; letter-spacing: .02em; font-size: 15px; }
+.ap-profile { color: #aab2bd; margin: 2px 0 10px; }
+.ap-probe { font-size: 12px; color: #8b95a1; margin-bottom: 10px; }
+.ap-probe.error { color: #ff8a80; }
+.ap-counts { display: grid; gap: 2px; font-size: 15px; padding: 10px 12px; border-radius: 10px; background: #23272e; }
+.ap-counts.bad { background: #4a1f22; }
+.ap-counts.good { background: #1d3b2a; }
+.ap-issues { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 13px; }
+.ap-issues code { color: #ffd479; word-break: break-all; }
+.ap-kind { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; background: #5a2a2e; color: #ffb4ab; margin-right: 4px; }
+.ap-warnings { margin-top: 12px; font-size: 12px; color: #c9b77a; }
+
+/* Window mode: the app fills the window under a slim one-line panel. */
+body.ap-window #ap-root { flex-direction: column; }
+body.ap-window #ap-panel { order: -1; width: auto; height: 44px; padding: 0 14px; border-left: 0; border-bottom: 1px solid #2c3037;
+  display: flex; align-items: center; gap: 14px; overflow: hidden; white-space: nowrap; }
+body.ap-window .ap-title { font-size: 13px; }
+body.ap-window .ap-profile, body.ap-window .ap-probe { margin: 0; font-size: 12px; }
+body.ap-window .ap-counts { display: flex; gap: 14px; padding: 4px 10px; font-size: 13px; }
+body.ap-window .ap-issues { margin: 0; padding: 0; list-style: none; display: block; overflow: hidden; text-overflow: ellipsis; font-size: 12px; min-width: 0; flex: 1; }
+body.ap-window .ap-issues li:not(:first-child) { display: none; }
+body.ap-window .ap-warnings { display: none; }
+body.ap-window #ap-stage { display: block; }
+body.ap-window #ap-device { border-radius: 0; box-shadow: none; width: 100%; height: 100%; }
+body.ap-window #ap-app { width: 100%; height: 100%; }

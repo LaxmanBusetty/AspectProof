@@ -1,0 +1,47 @@
+{
+  "app": "http://localhost:3000",
+  "harnessPort": 4400,
+  "frameWindow": "1280x800",
+  "profiles": [
+    { "id": "desktop-1920", "label": "Desktop 1920×1080", "mode": "window", "width": 1920, "height": 1080 },
+    { "id": "laptop-1280", "label": "Laptop 1280×800", "mode": "window", "width": 1280, "height": 800 },
+    { "id": "tablet-landscape", "label": "Tablet landscape 1024×768", "mode": "window", "width": 1024, "height": 768 },
+    { "id": "tablet-portrait", "label": "Tablet portrait 768×1024", "mode": "frame", "width": 768, "height": 1024, "touch": true },
+    { "id": "phone-landscape", "label": "Phone landscape 844×390", "mode": "frame", "width": 844, "height": 390, "touch": true },
+    { "id": "phone-390", "label": "Phone 390×844 (iPhone 14)", "mode": "frame", "width": 390, "height": 844, "touch": true },
+    { "id": "phone-375", "label": "Phone 375×812 (iPhone 11 Pro)", "mode": "frame", "width": 375, "height": 812, "touch": true },
+    { "id": "phone-320", "label": "Phone 320×568 (small Android)", "mode": "frame", "width": 320, "height": 568, "touch": true }
+  ],
+  "flows": [
+    {
+      "id": "browse",
+      "name": "Browse the shop",
+      "start": "/",
+      "objective": "Using the site's header navigation (open the Menu button first if the links are not visible), go to the Shop page. Confirm at least 3 products are listed, each with a price and an 'Add to cart' button."
+    },
+    {
+      "id": "checkout",
+      "name": "Checkout",
+      "start": "/#shop",
+      "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+    },
+    {
+      "id": "signup",
+      "name": "Newsletter signup",
+      "start": "/",
+      "objective": "Fill in the 'Get trail notes' form with name 'Test User' and email 'test@example.com', press 'Subscribe', and confirm a 'You're subscribed' message appears."
+    }
+  ],
+  "kane": {
+    "command": "kane-cli",
+    "headless": true,
+    "maxSteps": 30,
+    "timeoutSeconds": 300,
+    "concurrency": 1,
+    "extraArgs": []
+  },
+  "loop": {
+    "maxRounds": 4,
+    "fullSweepOnGreen": true
+  }
+}

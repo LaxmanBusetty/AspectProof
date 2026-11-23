@@ -1,0 +1,35 @@
+{
+  "name": "aspectproof",
+  "version": "0.1.0",
+  "description": "Prove your product works at every screen size. An AI coding agent fixes responsive bugs until Kane CLI verifies every flow at every size.",
+  "type": "module",
+  "bin": {
+    "aspectproof": "bin/aspectproof.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "hooks",
+    "aspectproof.config.json"
+  ],
+  "scripts": {
+    "demo": "node demo-shop/server.js 3000",
+    "serve": "node bin/aspectproof.js serve",
+    "verify": "node bin/aspectproof.js verify",
+    "loop": "node bin/aspectproof.js loop",
+    "report": "node bin/aspectproof.js report --open",
+    "reset-demo": "git checkout -- demo-shop/styles.css && rm -rf .aspectproof",
+    "setup-claude": "mkdir -p .claude && cp hooks/claude-settings.json .claude/settings.json && echo \"Installed the AspectProof Stop hook in .claude/settings.json\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "kane-cli",
+    "responsive",
+    "testing",
+    "ai-agent",
+    "claude-code"
+  ],
+  "license": "MIT"
+}

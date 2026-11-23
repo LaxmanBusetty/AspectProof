@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>__AP_TITLE__</title>
+  <link rel="stylesheet" href="/__ap/assets/frame.css">
+  <script>window.__AP_BOOT = /*__AP_BOOT__*/null;</script>
+</head>
+<body>
+  <div id="ap-root">
+    <div id="ap-stage">
+      <div id="ap-device">
+        <iframe id="ap-app" title="App under test"></iframe>
+      </div>
+    </div>
+    <aside id="ap-panel" aria-label="AspectProof layout panel" aria-live="polite">
+      <div class="ap-title">AspectProof layout</div>
+      <div id="ap-profile" class="ap-profile"></div>
+      <div id="ap-probe" class="ap-probe">Probe: starting…</div>
+      <div class="ap-counts">
+        <div>Issues now: <strong id="ap-now">0</strong></div>
+        <div id="ap-seen-line">Issues seen this session: <strong id="ap-seen">0</strong></div>
+      </div>
+      <ol id="ap-issues" class="ap-issues"></ol>
+      <div id="ap-warnings" class="ap-warnings"></div>
+    </aside>
+  </div>
+  <script src="/__ap/assets/frame.js"></script>
+</body>
+</html>

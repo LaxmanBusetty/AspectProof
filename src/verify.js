@@ -82,7 +82,8 @@ export async function verify(config, opts = {}) {
     for (const [size, group] of groups) {
       await setWindow(config, size);
       await pool(group, Math.max(1, config.kane.concurrency || 1), async (c) => {
-        const r = await runCell(config, harness, c, round, roundDir);
+        if (opts.live || config.live) log(`  … ${c.profile.id} × ${c.flow.id}: Kane is running`);
+        const r = await runCell(config, harness, c, round, roundDir, (opts.live || config.live) ? log : null);
         results.push(r);
         log(`  ${icon(r.verdict)} ${c.profile.id.padEnd(18)} × ${c.flow.id.padEnd(10)} ${describeVerdict(r)}`);
       });
@@ -121,7 +122,7 @@ export async function verify(config, opts = {}) {
   return { ok: failing.length === 0, round, results, summary, state, feedbackPath, reportPath };
 }
 
-async function runCell(config, harness, { profile, flow, key }, round, roundDir) {
+async function runCell(config, harness, { profile, flow, key }, round, roundDir, live) {
   const runId = `r${round}-${key}`;
   harness.reports.delete(runId);
   const url = harness.frameUrl(profile.id, runId, flow.start || '/');
@@ -132,6 +133,9 @@ async function runCell(config, harness, { profile, flow, key }, round, roundDir)
       url,
       name: `aspectproof-${runId}`,
       logPath: join(roundDir, 'logs', `${key}.ndjson`),
+      onEvent: live ? (ev) => {
+        if (ev.type === undefined && ev.status && ev.status !== 'running' && ev.remark) live(`      ${ev.status === 'failed' ? '✗' : '·'} ${String(ev.remark).slice(0, 140)}`);
+      } : undefined,
     });
   } catch (err) {
     kane = { exitCode: -1, status: 'error', started: false, errors: [String(err.message || err)], steps: [] };

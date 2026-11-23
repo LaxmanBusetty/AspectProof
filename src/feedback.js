@@ -47,6 +47,7 @@ export function buildFeedback(config, state, results) {
       if (r.kane.exitCode !== 0) {
         lines.push(`Kane verdict: ${r.kane.status}${r.kane.timedOut ? ' (timed out)' : ''}${r.kane.reason ? `, reason: ${r.kane.reason}` : ''}`);
         if (r.kane.oneLiner) lines.push(`Kane says: ${r.kane.oneLiner}`);
+        if (r.kane.bugVerdict?.confirmed) lines.push(`Kane bug verdict: confirmed ${r.kane.bugVerdict.severity || ''} ${r.kane.bugVerdict.category || 'product bug'}${r.kane.bugVerdict.rootCause ? `. Root cause: ${truncate(r.kane.bugVerdict.rootCause, 300)}` : ''}`);
         if (r.kane.summary && r.kane.summary !== r.kane.oneLiner) lines.push(`Kane summary: ${truncate(r.kane.summary, 600)}`);
         const lastSteps = (r.kane.steps || []).filter((s) => s.remark).slice(-5);
         if (lastSteps.length) {

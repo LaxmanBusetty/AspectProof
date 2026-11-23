@@ -18,6 +18,7 @@
     "verify": "node bin/aspectproof.js verify",
     "loop": "node bin/aspectproof.js loop",
     "report": "node bin/aspectproof.js report --open",
+    "watch": "node bin/aspectproof.js watch",
     "reset-demo": "git checkout -- demo-shop/styles.css && rm -rf .aspectproof",
     "setup-claude": "mkdir -p .claude && cp hooks/claude-settings.json .claude/settings.json && echo \"Installed the AspectProof Stop hook in .claude/settings.json\""
   },

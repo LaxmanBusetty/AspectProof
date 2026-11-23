@@ -1,0 +1,982 @@
+{
+  "summary": {
+    "round": 5,
+    "at": "2026-11-23T08:28:48.795Z",
+    "scope": "failed",
+    "reason": "Claude Code Stop hook",
+    "ran": 10,
+    "passed": 9,
+    "matrixPassed": 23,
+    "matrixTotal": 24,
+    "seconds": 802
+  },
+  "results": [
+    {
+      "key": "tablet-landscape__browse",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "tablet-landscape",
+        "label": "Tablet landscape 1024×768",
+        "width": 1024,
+        "height": 768,
+        "mode": "window"
+      },
+      "flow": {
+        "id": "browse",
+        "name": "Browse the shop",
+        "objective": "Using the site's header navigation (open the Menu button first if the links are not visible), go to the Shop page. Confirm at least 3 products are listed, each with a price and an 'Add to cart' button."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "navigated to the Shop page on localhost",
+        "summary": "Opened the site’s header navigation and went to the Shop page as requested.\nThe Shop page displayed 4 products, each with a price and an Add to cart button.\nThe layout status showed no issues during this session.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r5-tablet-landscape__browse&start=%2F",
+          "product_count": "4",
+          "layout_report": "AspectProof layout\nTablet landscape 1024×768 (full window)\nProbe: active (61 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QJVNTN37SDPCNB9PW8QZG/dashboard/share/US_P6R16LYPHEYDIL44D8E89BCX98LY7KOTO3N6Q6GKCCWGQGFN76FTMO1NGKJSAJZ3?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/30eab639-42c4-46cb-bb6a-e4bd35b82f78",
+        "durationS": 45.9,
+        "credits": 15.699395,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r5-tab"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking the Shop link in the header navigation"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "wait: PRIMARY: wait for the Shop page to finish loading"
+          },
+          {
+            "step": 5,
+            "status": "done",
+            "remark": "analyze: ANALYZE(textual_visual, 'The full \"AspectProof layout\" panel text is stored as {"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "assert: at least 3 products are listed, each with a price and an 'Add to cart' button"
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "assert: the \"AspectProof layout\" panel shows \"Issues seen this session: 0\""
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 67,
+        "lastUrl": "/#shop"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r5-tablet-landscape__browse&start=%2F",
+      "log": ".aspectproof/rounds/5/logs/tablet-landscape__browse.ndjson"
+    },
+    {
+      "key": "tablet-landscape__checkout",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "tablet-landscape",
+        "label": "Tablet landscape 1024×768",
+        "width": 1024,
+        "height": 768,
+        "mode": "window"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "completed a two-item Trail Runner Shoes order on the shop site",
+        "summary": "Added Trail Runner Shoes to the cart, opened the cart from the site navigation, changed its quantity to 2, and placed the order.\nThe order was confirmed successfully.\nRead the full AspectProof layout panel: “AspectProof layout — Tablet landscape 1024×768 (full window) — Probe: active (93 scans) — Issues now: 0 — Issues seen this session: 0.”\nThe layout panel reported no issues during the session.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r5-tablet-landscape__checkout&start=%2F%23shop",
+          "order_confirmation": "Order confirmed",
+          "issues_seen_this_session": "0",
+          "layout_report": "AspectProof layout\nTablet landscape 1024×768 (full window)\nProbe: active (93 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QMNBY1NEJHRAJ72PTHM2F/dashboard/share/US_EOPHHF60KGX1933WY9AYT32U3NZKJMNKEFTY89ZKI5Z8G4X82TU4U9KRBMWOO759?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/9f40d54a-4fe2-496f-994d-b37cd2bcbe9d",
+        "durationS": 68.9,
+        "credits": 24.79872,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r5-tab"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "click: Clicking the Cart link in the header navigation (Cart 1)"
+          },
+          {
+            "step": 5,
+            "status": "done",
+            "remark": "wait: queued plan (2 steps): type \"Quantity for Trail Runner Shoes\"; click \"Place orde"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "type: Type \"2\" into \"Quantity for Trail Runner Shoes\""
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": ""
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "click: Clicking Place order button in cart order summary"
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": "wait: PRIMARY: wait for the text \"Order confirmed\" to appear"
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "analyze: an 'Order confirmed' message appears"
+          },
+          {
+            "step": 11,
+            "status": "done",
+            "remark": "assert: an 'Order confirmed' message appears"
+          },
+          {
+            "step": 12,
+            "status": "done",
+            "remark": "analyze: the full panel text is stored as {{layout_report}}"
+          },
+          {
+            "step": 13,
+            "status": "done",
+            "remark": "assert: the \"AspectProof layout\" panel shows \"Issues seen this session: 0\""
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 101,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r5-tablet-landscape__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/5/logs/tablet-landscape__checkout.ndjson"
+    },
+    {
+      "key": "tablet-portrait__browse",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "tablet-portrait",
+        "label": "Tablet portrait 768×1024",
+        "width": 768,
+        "height": 1024,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "browse",
+        "name": "Browse the shop",
+        "objective": "Using the site's header navigation (open the Menu button first if the links are not visible), go to the Shop page. Confirm at least 3 products are listed, each with a price and an 'Add to cart' button."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "opened the Shop page on the site",
+        "summary": "You asked to open the Shop page using the site’s header navigation.\nThe header navigation was visible, so the Shop link was used directly.\nThe Shop page displayed 4 products, each with a price and an Add to cart button.\nThe layout status showed no issues during this session.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r5-tablet-portrait__browse&start=%2F",
+          "shop_product_count": "4",
+          "layout_report": "AspectProof layout\nTablet portrait 768×1024 · portrait\nProbe: active (84 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QQ6AVRH695E6T73MT5JJ2/dashboard/share/US_YUO4DOOJLGHQ6ZBBACJ43KIG8GK0XV93O8DT82F2D58MQVOMEU5CVXJPQ13S7HD0?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/cd8c3f9f-d471-4a6b-b287-fe896a179c16",
+        "durationS": 62.9,
+        "credits": 22.7572325,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r5-tabl"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 4,
+            "status": "running",
+            "remark": "Step 3"
+          },
+          {
+            "step": 5,
+            "status": "done",
+            "remark": "click: Clicking Shop in the header navigation"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "wait: PRIMARY: wait for the Shop page to load"
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "analyze: The full panel text is stored as {{layout_report}}."
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "assert: At least 3 products are listed, each with a price and an 'Add to cart' button."
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": "assert: The \"AspectProof layout\" panel shows \"Issues seen this session: 0\"."
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 87,
+        "lastUrl": "/#shop"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r5-tablet-portrait__browse&start=%2F",
+      "log": ".aspectproof/rounds/5/logs/tablet-portrait__browse.ndjson"
+    },
+    {
+      "key": "tablet-portrait__checkout",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "tablet-portrait",
+        "label": "Tablet portrait 768×1024",
+        "width": 768,
+        "height": 1024,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "placed an order for two Trail Runner Shoes on the shop site",
+        "summary": "Added Trail Runner Shoes to the cart.\nOpened the cart from the header navigation.\nChanged the Trail Runner Shoes quantity to 2 and placed the order.\nThe order was confirmed for 2 items.\nThe layout check showed no issues during the session.",
+        "reason": "AP(text) failed: [SSL: SSLV3_ALERT_BAD_RECORD_MAC] sslv3 alert bad record mac (_ssl.c:2580)",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r5-tablet-portrait__checkout&start=%2F%23shop",
+          "order_confirmed_message": "Order confirmed",
+          "layout_report": "AspectProof layout\nTablet portrait 768×1024 · portrait\nProbe: active (100 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QSGY9R050PFAZC4VQ857X/dashboard/share/US_D9J805R5SRWRSQFPURA679IIIIOWUJMXKZ860O10WOPC3UP0K3WI8QD7H6FDHD7R?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/b673c9e3-7aa1-49ca-b023-8ee264845929",
+        "durationS": 69.6,
+        "credits": 24.212774999999997,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r5-tabl"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "running",
+            "remark": "Step 4"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "click: Clicking Cart (1) in the header navigation"
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "wait: queued plan (2 steps): type \"Quantity for Trail Runner Shoes\"; click \"Place orde"
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "type: Type \"2\" into \"Quantity for Trail Runner Shoes\""
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": ""
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "click: Clicking Place order button"
+          },
+          {
+            "step": 11,
+            "status": "running",
+            "remark": "Step 10"
+          },
+          {
+            "step": 12,
+            "status": "done",
+            "remark": "analyze: ANALYZE(textual_visual, 'The full \"AspectProof layout\" panel text is stored as {"
+          },
+          {
+            "step": 13,
+            "status": "done",
+            "remark": "assert: An 'Order confirmed' message appears."
+          },
+          {
+            "step": 14,
+            "status": "done",
+            "remark": "assert: The \"AspectProof layout\" panel shows \"Issues seen this session: 0\"."
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 107,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r5-tablet-portrait__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/5/logs/tablet-portrait__checkout.ndjson"
+    },
+    {
+      "key": "phone-landscape__browse",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "phone-landscape",
+        "label": "Phone landscape 844×390",
+        "width": 844,
+        "height": 390,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "browse",
+        "name": "Browse the shop",
+        "objective": "Using the site's header navigation (open the Menu button first if the links are not visible), go to the Shop page. Confirm at least 3 products are listed, each with a price and an 'Add to cart' button."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "opened the Shop page on the site",
+        "summary": "Opened the site’s Shop page using the header navigation, as requested.\nThe Shop page displayed 4 products, and each product showed a price and an Add to cart button.\nThe layout status panel reported that no issues were seen during the session.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r5-phone-landscape__browse&start=%2F",
+          "product_listing_count": "4",
+          "layout_report": "AspectProof layout\nPhone landscape 844×390 · landscape\nProbe: active (54 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QW1J7DD473T4EF5RH6FF2/dashboard/share/US_2FWD2MZ8W5ZC8A3RDI0F89GJEA4TBD2HV22F0NGRYVGJ2EU3G7AJXD2DSRERORHB?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/d7808378-1dbf-4ae7-8a0a-15accc5c944c",
+        "durationS": 45.3,
+        "credits": 16.083969999999997,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=phone-landscape&run=r5-phon"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking the Shop link in the header navigation"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "wait: PRIMARY: wait for the Shop page to load"
+          },
+          {
+            "step": 5,
+            "status": "done",
+            "remark": "analyze: The full panel text is stored as {{layout_report}}."
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "assert: At least 3 products are listed, each with a price and an 'Add to cart' button."
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "assert: The \"AspectProof layout\" panel shows \"Issues seen this session: 0\"."
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 61,
+        "lastUrl": "/#shop"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r5-phone-landscape__browse&start=%2F",
+      "log": ".aspectproof/rounds/5/logs/phone-landscape__browse.ndjson"
+    },
+    {
+      "key": "phone-landscape__checkout",
+      "round": 5,
+      "verdict": "fail",
+      "failedBy": [
+        "kane"
+      ],
+      "profile": {
+        "id": "phone-landscape",
+        "label": "Phone landscape 844×390",
+        "width": 844,
+        "height": 390,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "The run stopped after wrongly treating the visible Cart link as unavailable and requiring a Menu button.",
+        "summary": "No control was blocked. The header showed direct Home, Shop, and Cart links, so the agent should have selected Cart instead of looking for a Menu button.\nUpdate the navigation logic to inspect the header first: click the visible Cart link when present, and search for Menu only if direct navigation links are actually absent.",
+        "reason": "Child agent failed: No Menu button is present in the app header; only direct Home, Shop, and Cart links are exposed.",
+        "resultCode": 440,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QXTCRDP4FPKZKPXBP375P/dashboard/share/US_JAKDPW79UNEP7NT5MD1USVHGZSCFIX6528EIZQ87YD8KWPAGUF97FI9RWBZQWQ84?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/6d8bad7f-14b5-4e8a-bd63-06b704b615a7",
+        "durationS": 77.6,
+        "credits": 26.35142,
+        "steps": [
+          {
+            "step": 2,
+            "status": "failed",
+            "remark": "wait: Waiting Open the Menu button"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "failed",
+            "remark": "agent_info: Child agent failed: No Menu button is present in the app header; only direct Hom"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: 1 status_disagrees advisory(ies) — self-explained by triaged failure record(s)\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/6d8bad7f-14b5-4e8a-bd63-06b704b615a7/evidence/06fc952a-2717-4c2b-8c24-1c6c922f8c14.evidence`"
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 114,
+        "lastUrl": "/#shop"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r5-phone-landscape__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/5/logs/phone-landscape__checkout.ndjson"
+    },
+    {
+      "key": "phone-landscape__signup",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "phone-landscape",
+        "label": "Phone landscape 844×390",
+        "width": 844,
+        "height": 390,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "signup",
+        "name": "Newsletter signup",
+        "objective": "Fill in the 'Get trail notes' form with name 'Test User' and email 'test@example.com', press 'Subscribe', and confirm a 'You're subscribed' message appears."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "subscribed Test User to trail notes on the app",
+        "summary": "Requested subscription to trail notes using the name Test User and email test@example.com.\nCompleted the form and pressed Subscribe.\nThe page confirmed: “You're subscribed.”\nThe layout status showed no issues seen during the session.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r5-phone-landscape__signup&start=%2F",
+          "subscription_confirmation": "You're subscribed",
+          "issues_seen_this_session": "0",
+          "layout_report": "AspectProof layout\nPhone landscape 844×390 · landscape\nProbe: active (50 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83R0C3FBF3HBVBHY2PC90H5/dashboard/share/US_ZWJ7JNDZ1W3WO7K14QJEIZ2RW5N8MVMXR7E3RQTN6P6WIL6WMB6DTYJLEOWFJAG1?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/98fff2d3-350d-4d52-ba66-9633801cf244",
+        "durationS": 40.3,
+        "credits": 16.4199,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=phone-landscape&run=r5-phon"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "wait: queued plan (3 steps): type \"Name\"; type \"Email\"; click \"Subscribe\""
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "type: Type \"Test User\" into \"Name\""
+          },
+          {
+            "step": 5,
+            "status": "done",
+            "remark": "type: Type \"test@example.com\" into \"Email\""
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": ""
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "click: Clicking Subscribe"
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "analyze: ANALYZE(textual_visual, 'the full \"AspectProof layout\" panel text is stored as {"
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": "assert: a 'You're subscribed' message appears"
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "assert: the \"AspectProof layout\" panel shows \"Issues seen this session: 0\""
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 54,
+        "lastUrl": "/"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r5-phone-landscape__signup&start=%2F",
+      "log": ".aspectproof/rounds/5/logs/phone-landscape__signup.ndjson"
+    },
+    {
+      "key": "phone-390__checkout",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "phone-390",
+        "label": "Phone 390×844 (iPhone 14)",
+        "width": 390,
+        "height": 844,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "placed an order for Trail Runner Shoes on the shopping site",
+        "summary": "Added Trail Runner Shoes to the cart.\nOpened the site menu because the header navigation links were not visible, then opened the cart.\nChanged the Trail Runner Shoes quantity to 2 and placed the order.\nThe order was confirmed for 2 items, and the session showed no layout issues.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=phone-390&run=r5-phone-390__checkout&start=%2F%23shop",
+          "order_confirmed_message_visible": "true",
+          "issues_seen_this_session_zero": "Issues seen this session: 0",
+          "layout_report": "AspectProof layout\nPhone 390×844 (iPhone 14) · portrait\nProbe: active (135 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83R1ZT7R22JDA37D62VREVQ/dashboard/share/US_8QOZM6S4A1J3VXUQ4CK63YN859T21RQMM6ARQ5QCYVF7C1YLZCVJW7GDXIRKM46N?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/a471d03a-13f3-4a52-8055-5812b02fa98c",
+        "durationS": 91.6,
+        "credits": 20.043195,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "click: Clicking Open the Menu button"
+          },
+          {
+            "step": 3,
+            "status": "running",
+            "remark": "Step 2"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "running",
+            "remark": "Step 4"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "click: Clicking Cart (1) in the header navigation to open the cart"
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "wait: queued plan (2 steps): type \"Quantity for Trail Runner Shoes\"; click \"Place orde"
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "type: Type \"2\" into \"Quantity for Trail Runner Shoes\""
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": "click: Click \"Place order\""
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "analyze: ANALYZE(textual_visual, 'The full \"AspectProof layout\" panel text is stored as {"
+          },
+          {
+            "step": 11,
+            "status": "done",
+            "remark": "assert: An 'Order confirmed' message appears."
+          },
+          {
+            "step": 12,
+            "status": "done",
+            "remark": "assert: The \"AspectProof layout\" panel shows \"Issues seen this session: 0\"."
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 140,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-390&run=r5-phone-390__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/5/logs/phone-390__checkout.ndjson"
+    },
+    {
+      "key": "phone-375__checkout",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "phone-375",
+        "label": "Phone 375×812 (iPhone 11 Pro)",
+        "width": 375,
+        "height": 812,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "completed an order for two Trail Runner Shoes on the shop site",
+        "summary": "Added Trail Runner Shoes to the cart.\nOpened the cart from the header menu, changed the shoe quantity to 2, and placed the order.\nThe order was confirmed.\nRead the AspectProof layout panel: “AspectProof layout\nPhone 375×812 (iPhone 11 Pro) · portrait\nProbe: active (144 scans)\nIssues now: 0\nIssues seen this session: 0”.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=phone-375&run=r5-phone-375__checkout&start=%2F%23shop",
+          "order_confirmation": "Order confirmed",
+          "layout_report": "AspectProof layout\nPhone 375×812 (iPhone 11 Pro) · portrait\nProbe: active (144 scans)\nIssues now: 0\nIssues seen this session: 0",
+          "issues_seen_this_session": "0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83R568GT1CD2F5N8MEQ2935/dashboard/share/US_HIYXQRIUZNXN32215BJ1AH7W97JRVF1S22ZOKEL6KQFE1QEV9MP04AWWF32KRXHQ?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/6849408f-1556-4bf9-9a62-fe1445fbc572",
+        "durationS": 96.2,
+        "credits": 32.318845,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "click: Clicking the Menu button in the top-right header"
+          },
+          {
+            "step": 3,
+            "status": "running",
+            "remark": "Step 2"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "running",
+            "remark": "Step 4"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "click: Clicking the Cart link in the header navigation"
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "type: Typing cart quantity 2 for Trail Runner Shoes"
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "click: Clicking Place order button"
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": "analyze: an 'Order confirmed' message appears"
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "assert: an 'Order confirmed' message appears"
+          },
+          {
+            "step": 11,
+            "status": "done",
+            "remark": "analyze: ANALYZE(textual_visual, 'the full \"AspectProof layout\" panel text is stored as {"
+          },
+          {
+            "step": 12,
+            "status": "done",
+            "remark": "assert: the \"AspectProof layout\" panel shows \"Issues seen this session: 0\""
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 147,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-375&run=r5-phone-375__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/5/logs/phone-375__checkout.ndjson"
+    },
+    {
+      "key": "phone-320__checkout",
+      "round": 5,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "phone-320",
+        "label": "Phone 320×568 (small Android)",
+        "width": 320,
+        "height": 568,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "placed an order for two Trail Runner Shoes on the shop site",
+        "summary": "Added “Trail Runner Shoes” to the cart on the small Android-sized view.\nOpened the site menu because the cart links were not initially visible, then opened the cart through the header navigation.\nChanged the cart quantity to 2 and placed the order.\nThe order was confirmed for 2 items, and the layout check reported no issues during the session.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=phone-320&run=r5-phone-320__checkout&start=%2F%23shop",
+          "order_confirmation": "Order confirmed; 2 items",
+          "layout_report": "AspectProof layout\nPhone 320×568 (small Android) · portrait\nProbe: active (110 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83R8H1MENSV93SP6AVY6JFX/dashboard/share/US_5NBCHRYQYU8WWX4M1BXF4UQJ0DWP4UQCN7LXZJJXFXLCWEM5ZXQ9H0RZCT645V0Z?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/e430dfe1-4195-41ef-84f7-0c893e873313",
+        "durationS": 76.1,
+        "credits": 25.140875,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "click: Clicking the Menu button in the top-right header"
+          },
+          {
+            "step": 3,
+            "status": "running",
+            "remark": "Step 2"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the cart links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "running",
+            "remark": "Step 4"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "click: Clicking the Cart (1) link in the header navigation"
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "wait: queued plan (2 steps): type \"Quantity for Trail Runner Shoes\"; click \"Place orde"
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "type: Type \"2\" into \"Quantity for Trail Runner Shoes\""
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": "click: Click \"Place order\""
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "analyze: The full panel text is stored as {{layout_report}}."
+          },
+          {
+            "step": 11,
+            "status": "done",
+            "remark": "assert: An 'Order confirmed' message appears."
+          },
+          {
+            "step": 12,
+            "status": "done",
+            "remark": "assert: The \"AspectProof layout\" panel shows \"Issues seen this session: 0\"."
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 114,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-320&run=r5-phone-320__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/5/logs/phone-320__checkout.ndjson"
+    }
+  ]
+}

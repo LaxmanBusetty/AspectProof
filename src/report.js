@@ -27,7 +27,7 @@ export function renderReport(config, state) {
     <div class="tl-round" title="Round ${r.round}: ${r.passed}/${r.ran} passed this round; matrix ${r.matrixPassed}/${r.matrixTotal}">
       <div class="tl-bar"><div class="tl-fill ${r.matrixPassed === r.matrixTotal ? 'ok' : ''}" style="height:${Math.round((r.matrixPassed / maxBar) * 100)}%"></div></div>
       <div class="tl-label">R${r.round}</div><div class="tl-sub">${r.matrixPassed}/${r.matrixTotal}</div>
-      <div class="tl-scope">${r.scope === 'failed' ? 'retest' : 'full'}</div>
+      <div class="tl-scope">${r.scope === 'failed' ? 'retest' : r.scope === 'selected' ? 'subset' : 'full'}</div>
     </div>`).join('');
 
   return `<!doctype html>

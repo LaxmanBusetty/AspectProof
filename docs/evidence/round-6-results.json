@@ -1,0 +1,131 @@
+{
+  "summary": {
+    "round": 6,
+    "at": "2026-11-23T08:30:45.246Z",
+    "scope": "failed",
+    "reason": "Claude Code Stop hook",
+    "ran": 1,
+    "passed": 1,
+    "matrixPassed": 24,
+    "matrixTotal": 24,
+    "seconds": 103
+  },
+  "results": [
+    {
+      "key": "phone-landscape__checkout",
+      "round": 6,
+      "verdict": "pass",
+      "failedBy": [],
+      "profile": {
+        "id": "phone-landscape",
+        "label": "Phone landscape 844×390",
+        "width": 844,
+        "height": 390,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 0,
+        "status": "passed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "placed an order for two Trail Runner Shoes on the shop site",
+        "summary": "Added Trail Runner Shoes to the cart, then opened the cart from the visible header navigation.\nChanged the Trail Runner Shoes quantity to 2 and placed the order; an “Order confirmed” message appeared.\nRead the AspectProof layout panel, which reported zero current issues and zero issues seen during the session.",
+        "reason": "Objective completed",
+        "resultCode": 100,
+        "finalState": {
+          "url": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r6-phone-landscape__checkout&start=%2F%23shop",
+          "order_confirmation": "Order confirmed",
+          "layout_report": "AspectProof layout\nPhone landscape 844×390 · landscape\nProbe: active (123 scans)\nIssues now: 0\nIssues seen this session: 0"
+        },
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83RBRWJ2BG398E6MBQBP218/dashboard/share/US_N414IETC8HN6E94NZUVRJ8ZT3MALDS7683HUXYOWB0ZUX03TMJH1Y518DLNRS18W?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/f1576476-2f80-4254-94ba-b2321a9a1b8d",
+        "durationS": 88.5,
+        "credits": 26.784637499999995,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=phone-landscape&run=r6-phon"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "running",
+            "remark": "Step 4"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "click: Clicking Cart in the header navigation"
+          },
+          {
+            "step": 7,
+            "status": "done",
+            "remark": "wait: queued plan (2 steps): type \"Quantity for Trail Runner Shoes\"; click \"Place orde"
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "type: Type \"2\" into \"Quantity for Trail Runner Shoes\""
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": ""
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "click: Clicking Place order"
+          },
+          {
+            "step": 11,
+            "status": "done",
+            "remark": "analyze: an 'Order confirmed' message appears"
+          },
+          {
+            "step": 12,
+            "status": "done",
+            "remark": "assert: an 'Order confirmed' message appears"
+          },
+          {
+            "step": 13,
+            "status": "done",
+            "remark": "analyze: the full panel text is stored as {{layout_report}}"
+          },
+          {
+            "step": 14,
+            "status": "done",
+            "remark": "assert: the \"AspectProof layout\" panel shows \"Issues seen this session: 0\""
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": ""
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 127,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r6-phone-landscape__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/6/logs/phone-landscape__checkout.ndjson"
+    }
+  ]
+}

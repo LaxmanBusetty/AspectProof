@@ -9,6 +9,7 @@ import { createHarness } from '../src/harness.js';
 import { verify, loadState } from '../src/verify.js';
 import { writeReport } from '../src/report.js';
 import { claudeStopHook, runLoop } from '../src/loop.js';
+import { watch } from '../src/watch.js';
 
 const pkgRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const [cmd, ...rest] = process.argv.slice(2);
@@ -19,10 +20,11 @@ const HELP = `AspectProof: prove your product works at every screen size, with K
 Usage:
   aspectproof init [--app http://localhost:3000] [--claude]   create config (and Claude Code Stop hook)
   aspectproof serve                      open the device frames yourself (prints a URL per profile)
-  aspectproof verify [--only failed] [--profiles a,b] [--flows x,y]
+  aspectproof verify [--only failed] [--profiles a,b] [--flows x,y] [--headed] [--live]
                                          run every profile × flow through Kane CLI + layout probe
   aspectproof loop [--agent claude|codex|"<cmd {prompt_file}>"] [--rounds N]
                                          verify → hand failures to a coding agent → re-verify, until green
+  aspectproof watch                      follow Kane's steps live (e.g. while the Claude hook runs)
   aspectproof report [--open]            rebuild .aspectproof/report.html
   aspectproof hook claude-stop           (used by the Claude Code Stop hook)
 
@@ -33,17 +35,18 @@ try {
     case 'init': await init(); break;
     case 'serve': await serve(); break;
     case 'verify': {
-      const config = await loadConfig();
-      const res = await verify(config, { only: flags.only, profiles: list(flags.profiles), flows: list(flags.flows) });
+      const config = applyViewFlags(await loadConfig());
+      const res = await verify(config, { only: flags.only, profiles: list(flags.profiles), flows: list(flags.flows), live: Boolean(flags.live) });
       process.exitCode = res.ok ? 0 : 1;
       break;
     }
     case 'loop': {
-      const config = await loadConfig();
+      const config = applyViewFlags(await loadConfig());
       const ok = await runLoop(config, { agent: flags.agent || 'claude', maxRounds: flags.rounds ? Number(flags.rounds) : undefined });
       process.exitCode = ok ? 0 : 1;
       break;
     }
+    case 'watch': await watch(await loadConfig()); break;
     case 'report': {
       const config = await loadConfig();
       const path = await writeReport(config, await loadState(config.cwd));
@@ -106,6 +109,13 @@ async function init() {
     await writeFile(sp, JSON.stringify(settings, null, 2) + '\n');
     console.log(already ? 'Claude Code Stop hook already installed.' : 'Installed the Claude Code Stop hook in .claude/settings.json.');
   }
+}
+
+// --headed shows Kane's Chrome window; --live prints Kane's steps as they happen.
+function applyViewFlags(config) {
+  if (flags.headed) config.kane.headless = false;
+  if (flags.live) config.live = true;
+  return config;
 }
 
 function parseFlags(args) {

@@ -1,0 +1,910 @@
+{
+  "summary": {
+    "round": 4,
+    "at": "2026-11-23T08:14:46.093Z",
+    "scope": "failed",
+    "reason": "Claude Code Stop hook",
+    "ran": 10,
+    "passed": 0,
+    "matrixPassed": 14,
+    "matrixTotal": 24,
+    "seconds": 687
+  },
+  "results": [
+    {
+      "key": "tablet-landscape__browse",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane"
+      ],
+      "profile": {
+        "id": "tablet-landscape",
+        "label": "Tablet landscape 1024×768",
+        "width": 1024,
+        "height": 768,
+        "mode": "window"
+      },
+      "flow": {
+        "id": "browse",
+        "name": "Browse the shop",
+        "objective": "Using the site's header navigation (open the Menu button first if the links are not visible), go to the Shop page. Confirm at least 3 products are listed, each with a price and an 'Add to cart' button."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "At the required tablet landscape size, the header provides neither visible Shop navigation nor a Menu button to reach Shop.",
+        "summary": "The tablet header hides its navigation links but does not show the Menu control that users need to open the hidden navigation.\nUpdate the tablet header so that visible navigation includes Shop, or show a working Menu button whenever those links are hidden.\nevidence: error_ui_text: Child agent failed: No Menu button is present in the app header or page controls",
+        "reason": "Child agent failed: No Menu button is present in the app header or page controls at this tablet layout.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83PWPTB9P7J0HRGZVAE0K88/dashboard/share/US_0A5VR5QRERB2L6C5KKSJ2AN54Q9JVT8Q7DRBEYQLG2DLN1ZOWQIEZ083KMQUROON?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/8bd7ee34-e353-4c2e-a066-d4f596d3fbab",
+        "durationS": 57.3,
+        "credits": 20.26463,
+        "steps": [
+          {
+            "step": 2,
+            "status": "failed",
+            "remark": "wait: Waiting Menu button"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 4,
+            "status": "failed",
+            "remark": "agent_info: Child agent failed: No Menu button is present in the app header or page controls"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/8bd7ee34-e353-4c2e-a066-d4f596d3fbab/evidence/1ab82271-14bc-4d0a-a3c9-98d6c32a1686.evidence`"
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 87,
+        "lastUrl": "/"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r4-tablet-landscape__browse&start=%2F",
+      "log": ".aspectproof/rounds/4/logs/tablet-landscape__browse.ndjson"
+    },
+    {
+      "key": "tablet-landscape__checkout",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane"
+      ],
+      "profile": {
+        "id": "tablet-landscape",
+        "label": "Tablet landscape 1024×768",
+        "width": 1024,
+        "height": 768,
+        "mode": "window"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "At tablet landscape size, the header provides no Menu button or cart link after the item is added, so checkout cannot continue.",
+        "summary": "The tablet header hides the navigation controls but does not provide the Menu control that should give access to the cart.\nRestore a visible cart link in the tablet header, or show a working Menu button that contains the cart link at 1024×768.\nevidence: objective_contradiction: Step 2 is blocked: the tablet header shows only Northtrail, with no Menu button or cart link.",
+        "reason": "Step 2 is blocked: the tablet header shows only Northtrail, with no Menu button or cart link.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83PYPSMHAARBVAMF0EZWK90/dashboard/share/US_7QMW8FEVV0YZRM54UYNZD7EOJG9DCSRNTZLCM1LMZHXVN3C4EH7AHHV2N28N3LHF?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/b771e5f7-be11-4b13-bf47-3ea88c3941e6",
+        "durationS": 39.8,
+        "credits": 15.21914,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r4-tab"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "failed",
+            "remark": "agent_info: Step 2 is blocked: the tablet header shows only Northtrail, with no Menu button "
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/b771e5f7-be11-4b13-bf47-3ea88c3941e6/evidence/47e3c2db-6c13-47c8-a60a-84c691ddc28d.evidence`"
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 54,
+        "lastUrl": "/#shop"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-landscape&run=r4-tablet-landscape__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/4/logs/tablet-landscape__checkout.ndjson"
+    },
+    {
+      "key": "tablet-portrait__browse",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane"
+      ],
+      "profile": {
+        "id": "tablet-portrait",
+        "label": "Tablet portrait 768×1024",
+        "width": 768,
+        "height": 1024,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "browse",
+        "name": "Browse the shop",
+        "objective": "Using the site's header navigation (open the Menu button first if the links are not visible), go to the Shop page. Confirm at least 3 products are listed, each with a price and an 'Add to cart' button."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "At tablet portrait size, the header provides neither visible navigation links nor the Menu control needed to reach Shop.",
+        "summary": "The tablet-sized header hides the site navigation but does not provide a Menu button as an alternative, so users cannot navigate to Shop using the required header navigation.\nAt tablet portrait width, keep the Shop link visible or show a working Menu button that contains the Shop link.\nevidence: objective_contradiction: the site's header navigation links are not visible",
+        "reason": "Child agent failed: No Menu button is present in the app header; only the Northtrail link is visible.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83Q04HHPCDDZTBWXEY1Y1JS/dashboard/share/US_ZV3YARWXB3VQUDR4G1ZTHSPC0DUETM2D7TIRRLKAO7FRSRPGR2AWFO5ETRGU5V6U?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/e2b0175f-bff0-40cc-9b1d-32e7dc97cf2e",
+        "durationS": 57.9,
+        "credits": 16.262407500000002,
+        "steps": [
+          {
+            "step": 2,
+            "status": "failed",
+            "remark": "wait: Waiting Menu button"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 4,
+            "status": "failed",
+            "remark": "agent_info: Child agent failed: No Menu button is present in the app header; only the Northt"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/e2b0175f-bff0-40cc-9b1d-32e7dc97cf2e/evidence/b2bd1608-11fc-4629-9b4d-af80c0d600eb.evidence`"
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 87,
+        "lastUrl": "/"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r4-tablet-portrait__browse&start=%2F",
+      "log": ".aspectproof/rounds/4/logs/tablet-portrait__browse.ndjson"
+    },
+    {
+      "key": "tablet-portrait__checkout",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane"
+      ],
+      "profile": {
+        "id": "tablet-portrait",
+        "label": "Tablet portrait 768×1024",
+        "width": 768,
+        "height": 1024,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "At tablet portrait size, the site hides its header navigation without providing a Menu button, so the cart cannot be opened through the required navigation.",
+        "summary": "The tablet header leaves out both the visible navigation links and the Menu control that should replace them. This leaves the shopper with no header path to the cart after adding the item.\nRestore a visible cart/navigation link at this tablet size, or show an accessible Menu button that contains the cart link.\nevidence: error_ui_text: Child agent failed: No Menu button is present in the app header or accessibility\nevidence: objective_contradiction: the site's header navigation links are not visible",
+        "reason": "Child agent failed: No Menu button is present in the app header or accessibility tree at tablet portrait size.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83Q23SFZ50RCQPDWHWT26ER/dashboard/share/US_7PAJ3WAJJ8ZFN7O6XLAP3RCNZ7J8ZZ17RMMUC5TWNEH9NGB73VDM08AA85GZW7M1?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/3e9777cc-a299-4fb0-8259-c8bc5ba4ee1f",
+        "durationS": 65.8,
+        "credits": 27.471650000000004,
+        "steps": [
+          {
+            "step": 2,
+            "status": "failed",
+            "remark": "wait: Waiting Menu button"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "failed",
+            "remark": "agent_info: Child agent failed: No Menu button is present in the app header or accessibility"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/3e9777cc-a299-4fb0-8259-c8bc5ba4ee1f/evidence/dac2f2ed-4380-4c14-9195-50c4b78dfe64.evidence`"
+      },
+      "layout": {
+        "issues": [],
+        "warnings": [],
+        "probeError": null,
+        "scans": 101,
+        "lastUrl": "/#shop"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=tablet-portrait&run=r4-tablet-portrait__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/4/logs/tablet-portrait__checkout.ndjson"
+    },
+    {
+      "key": "phone-landscape__browse",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane",
+        "layout"
+      ],
+      "profile": {
+        "id": "phone-landscape",
+        "label": "Phone landscape 844×390",
+        "width": 844,
+        "height": 390,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "browse",
+        "name": "Browse the shop",
+        "objective": "Using the site's header navigation (open the Menu button first if the links are not visible), go to the Shop page. Confirm at least 3 products are listed, each with a price and an 'Add to cart' button."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "At phone-landscape size, the Promotion overlay prevents users from reaching Shop through the header.",
+        "summary": "The promotion banner is placed on top of the header controls at this screen size. Shop cannot be selected, and no Menu button is available as an alternative.\nChange the phone-landscape layout so the promotion banner does not cover the header, and show a reachable Menu control whenever the navigation links are hidden.\nevidence: objective_contradiction: Header Shop navigation is covered by the Promotion overlay, while Menu is hidden, so neither control can be used.",
+        "reason": "Header Shop navigation is covered by the Promotion overlay, while Menu is hidden, so neither control can be used.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83Q4AQ4VNHV9JX6JCAHQG3K/dashboard/share/US_NS91T0D0H90KQCVLX1U1WSF9A27CO4KQWJWOX4KXFY7C2NV4XBBISB0GDX9F44ZW?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/b92b6b0e-2e01-42f7-8179-cf9ef5b4687b",
+        "durationS": 45.4,
+        "credits": 16.170807500000002,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=phone-landscape&run=r4-phon"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "scroll: Scrolling the app header navigation"
+          },
+          {
+            "step": 4,
+            "status": "failed",
+            "remark": "agent_info: Header Shop navigation is covered by the Promotion overlay, while Menu is hidden"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/b92b6b0e-2e01-42f7-8179-cf9ef5b4687b/evidence/8ea1f155-ad65-4b57-937e-b52b1c691505.evidence`"
+      },
+      "layout": {
+        "issues": [
+          {
+            "kind": "covered",
+            "selector": "header.site-header > a.brand",
+            "text": "Northtrail",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "section#view-home > div.hero > a.btn",
+            "text": "Browse the shop",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          }
+        ],
+        "warnings": [],
+        "probeError": null,
+        "scans": 67,
+        "lastUrl": "/"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r4-phone-landscape__browse&start=%2F",
+      "log": ".aspectproof/rounds/4/logs/phone-landscape__browse.ndjson"
+    },
+    {
+      "key": "phone-landscape__checkout",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane",
+        "layout"
+      ],
+      "profile": {
+        "id": "phone-landscape",
+        "label": "Phone landscape 844×390",
+        "width": 844,
+        "height": 390,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "After Trail Runner Shoes was added to the cart at phone-landscape size, the required layout check reported two issues instead of zero.",
+        "summary": "At the required phone-landscape screen size, the page layout leaves interface elements overlapping instead of keeping the page controls clear. The layout checker recorded issues after the user added the item.\nFix the phone-landscape responsive layout so the promotion area and header controls do not overlap, then rerun the checkout flow and verify the panel remains at zero issues.\nevidence: objective_contradiction: Constraint failure: AspectProof layout panel shows Issues seen this session: 2 after Add to cart.",
+        "reason": "Constraint failure: AspectProof layout panel shows Issues seen this session: 2 after Add to cart.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83Q5XPAV93YCXRSNXXPG0CA/dashboard/share/US_KRPT3DLRGFIEFYCP6NVHB7XZCUVCU0MZ9AALM2KG3MFDSB5SZKERLH2DDI8VS4AD?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/df4022a7-0c54-4ab2-b1f6-0ae3b5574ea5",
+        "durationS": 42.1,
+        "credits": 13.7447075,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=phone-landscape&run=r4-phon"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "failed",
+            "remark": "agent_info: Constraint failure: AspectProof layout panel shows Issues seen this session: 2 a"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/df4022a7-0c54-4ab2-b1f6-0ae3b5574ea5/evidence/b5a73f1b-afc3-41bd-a8a3-378fe61568b6.evidence`"
+      },
+      "layout": {
+        "issues": [
+          {
+            "kind": "covered",
+            "selector": "header.site-header > a.brand",
+            "text": "Northtrail",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "div#product-grid > article.product > button.btn.add-to-cart",
+            "text": "Add to cart",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          }
+        ],
+        "warnings": [],
+        "probeError": null,
+        "scans": 54,
+        "lastUrl": "/#shop"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r4-phone-landscape__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/4/logs/phone-landscape__checkout.ndjson"
+    },
+    {
+      "key": "phone-landscape__signup",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane",
+        "layout"
+      ],
+      "profile": {
+        "id": "phone-landscape",
+        "label": "Phone landscape 844×390",
+        "width": 844,
+        "height": 390,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "signup",
+        "name": "Newsletter signup",
+        "objective": "Fill in the 'Get trail notes' form with name 'Test User' and email 'test@example.com', press 'Subscribe', and confirm a 'You're subscribed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "At phone-landscape size, the promotion banner covers the newsletter form, including Subscribe, so the signup cannot be completed and the required confirmation never appears.",
+        "summary": "The promotion banner is placed over the page controls at this screen size instead of leaving the signup fields and Subscribe button usable.\nFix the phone-landscape promotion banner so it does not overlap the newsletter form or its Subscribe button, then rerun the signup flow and verify the layout panel reports zero issues.\nevidence: objective_contradiction: check FAILED: a 'You're subscribed' message appears — expected: true | observed: {{subscribed_message_visible}}\nevidence: error_ui_text: button \"Subscribe\": covered by div.promo-bar (\"Promotion\")\nevidence: error_ui_text: Issues seen this session: 7",
+        "reason": "The AspectProof panel shows Issues seen this session: 7, not 0, and the panel cannot be interacted with.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83Q7CMYWVYX95Z75PERWK0E/dashboard/share/US_Z267GDMI8HYRKD6P3J7LW7X9523F43PG96JMMYNOLWKTWYDH34CCDJJX7AV0U87S?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/3a1249e7-5ad7-4c02-97f0-2b3f2a33ab0f",
+        "durationS": 108.5,
+        "credits": 33.444175,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=phone-landscape&run=r4-phon"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "wait: queued plan (3 steps): type \"Name\"; type \"Email\"; click \"Subscribe\""
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "type: Type \"Test User\" into \"Name\""
+          },
+          {
+            "step": 5,
+            "status": "done",
+            "remark": ""
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "press_key: PRIMARY: press the Tab key to reach the email input"
+          },
+          {
+            "step": 7,
+            "status": "running",
+            "remark": "Step 6"
+          },
+          {
+            "step": 8,
+            "status": "done",
+            "remark": "press_key: PRIMARY: press the Tab key to reach the Subscribe button"
+          },
+          {
+            "step": 9,
+            "status": "done",
+            "remark": "press_key: PRIMARY: Fill in the 'Get trail notes' form with name 'Test User' and email 'tes"
+          },
+          {
+            "step": 10,
+            "status": "done",
+            "remark": "press_key: PRIMARY: press Shift+Tab to return to the email input"
+          },
+          {
+            "step": 11,
+            "status": "done",
+            "remark": "type: Typing test@example.com into the Email field"
+          },
+          {
+            "step": 12,
+            "status": "done",
+            "remark": "press_key: PRIMARY: press the Tab key to reach the Subscribe button"
+          },
+          {
+            "step": 13,
+            "status": "done",
+            "remark": "press_key: PRIMARY: Fill in the 'Get trail notes' form with name 'Test User' and email 'tes"
+          },
+          {
+            "step": 14,
+            "status": "done",
+            "remark": "analyze: a 'You're subscribed' message appears"
+          },
+          {
+            "step": 15,
+            "status": "done",
+            "remark": "assert: a 'You're subscribed' message appears"
+          },
+          {
+            "step": 16,
+            "status": "failed",
+            "remark": "agent_info: The AspectProof panel shows Issues seen this session: 7, not 0, and the panel ca"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/3a1249e7-5ad7-4c02-97f0-2b3f2a33ab0f/evidence/664022cf-08ef-436b-acf0-a58b640e5263.evidence`"
+      },
+      "layout": {
+        "issues": [
+          {
+            "kind": "covered",
+            "selector": "header.site-header > a.brand",
+            "text": "Northtrail",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "section#view-home > div.hero > a.btn",
+            "text": "Browse the shop",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "form#signup-form > label > input",
+            "text": "name",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "form#signup-form > label > input",
+            "text": "email",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "form#signup-form > button.btn",
+            "text": "Subscribe",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "form#signup-form > label > input",
+            "text": "Test User",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          },
+          {
+            "kind": "covered",
+            "selector": "form#signup-form > label > input",
+            "text": "test@example.com",
+            "detail": "covered by div.promo-bar (\"Promotion\")"
+          }
+        ],
+        "warnings": [],
+        "probeError": null,
+        "scans": 174,
+        "lastUrl": "/"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-landscape&run=r4-phone-landscape__signup&start=%2F",
+      "log": ".aspectproof/rounds/4/logs/phone-landscape__signup.ndjson"
+    },
+    {
+      "key": "phone-390__checkout",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane",
+        "layout"
+      ],
+      "profile": {
+        "id": "phone-390",
+        "label": "Phone 390×844 (iPhone 14)",
+        "width": 390,
+        "height": 844,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "On the required phone-sized layout, the checkout cannot be completed because the Place order button extends beyond the right edge.",
+        "summary": "The checkout layout is wider than the phone screen, leaving part of the Place order control outside the visible page.\nMake the checkout controls responsive at 390px width so Place order stays fully inside the viewport, then rerun the complete cart-and-order flow.\nevidence: objective_contradiction: Step 3 is blocked: the AspectProof panel reports 4 issues, including Place order extending 45px past the right edge.",
+        "reason": "Step 3 is blocked: the AspectProof panel reports 4 issues, including Place order extending 45px past the right edge.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QAXQZ5EGGJQZAVMAZP90F/dashboard/share/US_VMCDVZM2W1L68OUBZDG5HW1HPET0SAZGN5RI03OVMFIHKDQ6L03C5DYI2BQSWXVT?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/cfdee62f-acba-4b92-99a0-6ff4d01e3c9f",
+        "durationS": 48.4,
+        "credits": 18.2197375,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "navigate: Navigate to http://localhost:4400/__ap/frame?profile=phone-390&run=r4-phone-390_"
+          },
+          {
+            "step": 3,
+            "status": "done",
+            "remark": "click: Clicking Add to cart for Trail Runner Shoes"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "click: Clicking the Menu button in the top-right header"
+          },
+          {
+            "step": 5,
+            "status": "done",
+            "remark": "click: Clicking the Cart link in the header to open the cart"
+          },
+          {
+            "step": 6,
+            "status": "failed",
+            "remark": "agent_info: Step 3 is blocked: the AspectProof panel reports 4 issues, including Place order"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/cfdee62f-acba-4b92-99a0-6ff4d01e3c9f/evidence/423cb11d-f464-4adc-92fa-59d89b728411.evidence`"
+      },
+      "layout": {
+        "issues": [
+          {
+            "kind": "horizontal-overflow",
+            "selector": "page",
+            "text": "",
+            "detail": "page is 456px wide in a 390px viewport (+66px, sideways scrolling)"
+          },
+          {
+            "kind": "overflow-source",
+            "selector": "div#cart-contents > aside.cart-summary",
+            "text": "Subtotal $129.00 Shipping Free Total $1…",
+            "detail": "440px wide, right edge at 456px (viewport 390px); computed min-width: 440px, width: 440px"
+          },
+          {
+            "kind": "overflow-source",
+            "selector": "ul#cart-items",
+            "text": "Trail Runner Shoes Qty $129.00",
+            "detail": "440px wide, right edge at 456px (viewport 390px); computed width: 440px"
+          },
+          {
+            "kind": "offscreen",
+            "selector": "button#place-order",
+            "text": "Place order",
+            "detail": "extends 45px past the right edge"
+          }
+        ],
+        "warnings": [],
+        "probeError": null,
+        "scans": 61,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-390&run=r4-phone-390__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/4/logs/phone-390__checkout.ndjson"
+    },
+    {
+      "key": "phone-375__checkout",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane",
+        "layout"
+      ],
+      "profile": {
+        "id": "phone-375",
+        "label": "Phone 375×812 (iPhone 11 Pro)",
+        "width": 375,
+        "height": 812,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "The run stopped on a no-issues assertion even though the displayed AspectProof panel shows zero current and session issues.",
+        "summary": "The automation treated the layout checker as having four issues without a matching page state. At the recorded point, the panel shown in the evidence says there are zero issues, so the test asserted a state that was not present.\nFix the layout-result collection/assertion to read the current run's AspectProof panel after the checkout flow. Do not fail on a stale or mismatched count; the displayed report at the recorded state is \"AspectProof layout\\nPhone 375×812 (iPhone 11 Pro) · portrait\\nProbe: active (81 scans)\\nIssues now: 0\\nIssues seen this session: 0\".",
+        "reason": "Blocked: AspectProof layout panel visibly reports four issues, violating the no-issues constraint before checkout.",
+        "resultCode": 750,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QCNG7BGXEB0NQ9JGM1STC/dashboard/share/US_O3AO83BSW9O34SBIIJUP4QJC2SJR3N25L0LKAO0N5277YE70B28TBHZ9O17LM8OV?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/3a576fb5-4ebf-480c-963e-6f43d3e568cd",
+        "durationS": 73.6,
+        "credits": 27.8801275,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "click: Clicking the Menu button in the top-right header"
+          },
+          {
+            "step": 3,
+            "status": "running",
+            "remark": "Step 2"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the site's header navigation links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "running",
+            "remark": "Step 4"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "click: Opening the cart from the site header menu"
+          },
+          {
+            "step": 7,
+            "status": "failed",
+            "remark": "agent_info: Blocked: AspectProof layout panel visibly reports four issues, violating the no-"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: 1 status_disagrees advisory(ies) — self-explained by triaged failure record(s)\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/3a576fb5-4ebf-480c-963e-6f43d3e568cd/evidence/e30715bc-8a57-4db1-b565-ff9baef91672.evidence`"
+      },
+      "layout": {
+        "issues": [
+          {
+            "kind": "horizontal-overflow",
+            "selector": "page",
+            "text": "",
+            "detail": "page is 456px wide in a 375px viewport (+81px, sideways scrolling)"
+          },
+          {
+            "kind": "overflow-source",
+            "selector": "div#cart-contents > aside.cart-summary",
+            "text": "Subtotal $129.00 Shipping Free Total $1…",
+            "detail": "440px wide, right edge at 456px (viewport 375px); computed min-width: 440px, width: 440px"
+          },
+          {
+            "kind": "overflow-source",
+            "selector": "ul#cart-items",
+            "text": "Trail Runner Shoes Qty $129.00",
+            "detail": "440px wide, right edge at 456px (viewport 375px); computed width: 440px"
+          },
+          {
+            "kind": "offscreen",
+            "selector": "button#place-order",
+            "text": "Place order",
+            "detail": "extends 60px past the right edge"
+          }
+        ],
+        "warnings": [],
+        "probeError": null,
+        "scans": 107,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-375&run=r4-phone-375__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/4/logs/phone-375__checkout.ndjson"
+    },
+    {
+      "key": "phone-320__checkout",
+      "round": 4,
+      "verdict": "fail",
+      "failedBy": [
+        "kane",
+        "layout"
+      ],
+      "profile": {
+        "id": "phone-320",
+        "label": "Phone 320×568 (small Android)",
+        "width": 320,
+        "height": 568,
+        "mode": "frame"
+      },
+      "flow": {
+        "id": "checkout",
+        "name": "Checkout",
+        "objective": "Add 'Trail Runner Shoes' to the cart. Then open the cart using the site's header navigation (open the Menu button first if the links are not visible). Change its quantity to 2, press 'Place order', and confirm an 'Order confirmed' message appears."
+      },
+      "kane": {
+        "exitCode": 1,
+        "status": "failed",
+        "started": true,
+        "timedOut": false,
+        "oneLiner": "On the 320×568 phone layout, the checkout cannot be completed because the Place order control is offscreen and the cart has overflow problems.",
+        "summary": "The mobile cart and checkout layout does not keep the order button reachable within the phone screen.\nFix the 320×568 cart/checkout responsive layout so users can scroll to and activate Place order, with no cart overflow. Re-run the phone checkout flow and verify the layout panel remains at zero issues.\nevidence: objective_contradiction: Step 3 is blocked: Place order is offscreen; panel reports 4 issues including cart overflow.",
+        "reason": "Step 3 is blocked: Place order is offscreen; panel reports 4 issues including cart overflow.",
+        "resultCode": 740,
+        "finalState": {},
+        "testUrl": "https://test-manager.lambdatest.com/projects/01M82Q55C2QTKS10S4VPF25CDB/test-cases/01M83QF4DH36AJGPFK10WXKF2R/dashboard/share/US_KGBSJN6KLI0DVWW2T98BPTRB42ID7E4ZUV3VUWY1VFCKQR4G04F7TW28R9QQZM4Q?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "/Users/laxmankumarbusetty/.testmuai/kaneai/sessions/f6dd9b1f-2d77-42b4-ae88-1d53272358b8",
+        "durationS": 74.2,
+        "credits": 25.36972,
+        "steps": [
+          {
+            "step": 2,
+            "status": "done",
+            "remark": "click: Clicking the Menu button in the top-right header"
+          },
+          {
+            "step": 3,
+            "status": "running",
+            "remark": "Step 2"
+          },
+          {
+            "step": 4,
+            "status": "done",
+            "remark": "analyze: the links are not visible"
+          },
+          {
+            "step": 5,
+            "status": "running",
+            "remark": "Step 4"
+          },
+          {
+            "step": 6,
+            "status": "done",
+            "remark": "click: Clicking the Cart link in the header navigation"
+          },
+          {
+            "step": 7,
+            "status": "failed",
+            "remark": "agent_info: Step 3 is blocked: Place order is offscreen; panel reports 4 issues including ca"
+          }
+        ],
+        "errors": [],
+        "warnings": [],
+        "stderrTail": "Skill update available: not installed → 0.1.4 — run `kane-cli install skill`\n\nRunning on: Desktop · Chrome\nevidence: view locally with `kane-cli evidence serve /Users/laxmankumarbusetty/.testmuai/kaneai/sessions/f6dd9b1f-2d77-42b4-ae88-1d53272358b8/evidence/655bc586-31e3-40af-b95d-2ad832c5a469.evidence`"
+      },
+      "layout": {
+        "issues": [
+          {
+            "kind": "horizontal-overflow",
+            "selector": "page",
+            "text": "",
+            "detail": "page is 456px wide in a 320px viewport (+136px, sideways scrolling)"
+          },
+          {
+            "kind": "overflow-source",
+            "selector": "div#cart-contents > aside.cart-summary",
+            "text": "Subtotal $129.00 Shipping Free Total $1…",
+            "detail": "440px wide, right edge at 456px (viewport 320px); computed min-width: 440px, width: 440px"
+          },
+          {
+            "kind": "overflow-source",
+            "selector": "ul#cart-items",
+            "text": "Trail Runner Shoes Qty $129.00",
+            "detail": "440px wide, right edge at 456px (viewport 320px); computed width: 440px"
+          },
+          {
+            "kind": "offscreen",
+            "selector": "button#place-order",
+            "text": "Place order",
+            "detail": "extends 115px past the right edge"
+          }
+        ],
+        "warnings": [],
+        "probeError": null,
+        "scans": 107,
+        "lastUrl": "/#cart"
+      },
+      "harnessUrl": "http://localhost:4400/__ap/frame?profile=phone-320&run=r4-phone-320__checkout&start=%2F%23shop",
+      "log": ".aspectproof/rounds/4/logs/phone-320__checkout.ndjson"
+    }
+  ]
+}

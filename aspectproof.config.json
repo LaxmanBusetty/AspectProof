@@ -34,7 +34,7 @@
   ],
   "kane": {
     "command": "kane-cli",
-    "headless": true,
+    "headless": false,
     "maxSteps": 30,
     "timeoutSeconds": 300,
     "concurrency": 1,
